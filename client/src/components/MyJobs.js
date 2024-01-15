@@ -1,28 +1,29 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom'
 
-const Dashboard =  props => {
+const MyJobs =  props => {
     return (
+        
         <div class='container '>
 
             <table class='table table-striped'>
                 <thead>
                     <tr>
-                        <th>job</th>
-                        <th>location</th>
-                        <th>action</th>
+                        <th>My jobs</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    {/* this is where a .map will go */}
+                        {/* this is where a .map will go */}
                     <tr>
-                        <td>"chores.jobs"</td>
-                        <td>"chores.locations"</td>
+                        <td>"user.chores.jobs"</td>
+                        
                         {/* <td>"action button for chores"</td> */}
                         <td class='d-flex justify-content-evenly'>
+                            {/* these might need to change to links */}
                                 <button type="button" class="btn btn-primary">view</button>
-                                <button type="button" class="btn btn-primary">add</button>
-                                <button type="button" class="btn btn-primary">edit</button>
-                                <button type="button" class="btn btn-primary">cancel</button>
+                                <button type="button" class="btn btn-primary">done</button>
+                                
                         </td>
                         
                         
@@ -31,8 +32,7 @@ const Dashboard =  props => {
                 </tbody>
             </table>
         </div>
-        
     )
 }
 
-export default Dashboard;
+export default MyJobs;
