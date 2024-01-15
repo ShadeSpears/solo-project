@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Main from './views/Main';
+import AddJob from './components/AddJob'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Main/>}/>
+        <Route path="/add" element={<AddJob/>}/>
         {/* <Route path="/edit/:id" element={<Edit/>}/> */}
       </Routes>
     </div>
