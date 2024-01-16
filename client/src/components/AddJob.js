@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AddJob =  props => {
     return (
@@ -8,8 +9,8 @@ const AddJob =  props => {
                     <h1>Add a Job</h1>
                 </div>
                 <div class='d-flex align-items-center'>
-                    <button type="button" class="btn btn-primary">Back</button>
-                    <button type="button" class="btn btn-primary">logout</button>
+                    <Link to={'/dashboard'}><button type="button" class="btn btn-primary">Back</button></Link>
+                    <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link>
                 </div>
             </div>
             {/* This will be inside of a form */}
