@@ -2,6 +2,7 @@ import {useState} from "react";
 
 import MyJobs from "../components/MyJobs";
 import Dashboard from "../components/Dashboard";
+import { Link } from "react-router-dom";
 
 
 const Main = (props)=>{
@@ -13,10 +14,10 @@ const Main = (props)=>{
             <div class=' d-flex justify-content-between'>
             <div class='d-flex align-items-center'>
                 <h1>Welcome "user.firstName"!</h1>
-                <button type="button" class="btn btn-primary">logout</button>
+                <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link>
             </div>
             <div class='d-flex align-items-center'>
-                <button type="button" class="btn btn-primary">Add a job</button>
+            <Link to={'/addJob'}><button type="button" class="btn btn-primary">Add a Job</button></Link>
             </div>
         </div>
             
