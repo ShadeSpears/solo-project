@@ -4,18 +4,22 @@ import {Link} from 'react-router-dom'
 
 
 const MyJobs =  props => {
-    const [chores, setChores] = useState([])
+    const {choreList, setChoreList} = props
+    
+    // const [chores, setChores] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/Chores')
+    
+
+    const deleteHandler = (id) => {
+        axios.delete(`http://localhost:8000/api/deleteChores/${id}`)
         .then((res) => {
             console.log(res);
-            setChores(res.data)
+            setChoreList(choreList.filter((chore) => chore._id !== id))
         })
         .catch((err) => {
             console.log(err);
         })
-    }, [])
+    }
     return (
         
         <div class='container '>
@@ -29,15 +33,15 @@ const MyJobs =  props => {
                     </tr>
                 </thead>
                 <tbody>
-                        {chores.map((chore) => (
+                        {choreList.map((chore) => (
                         <tr key={chore._id}>
                             <td>{chore.title}</td>
                             
                             {/* <td>"action button for chores"</td> */}
                             <td class='d-flex justify-content-evenly'>
                                 {/* these might need to change to links */}
-                                    <Link to={'/view/:id'}><button type="button" class="btn btn-primary">view</button></Link>
-                                    <button type="button" class="btn btn-primary">done</button>
+                                    <Link to={`/view/${chore._id}`}><button type="button" class="btn btn-primary">view</button></Link>
+                                    <button onClick={() => deleteHandler(chore._id)} type="button" class="btn btn-primary">done</button>
                                     
                             </td>
                             

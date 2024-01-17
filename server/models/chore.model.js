@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const ChoreSchema =  new mongoose.Schema({
@@ -13,8 +14,9 @@ const ChoreSchema =  new mongoose.Schema({
     location: {
         type: String,
         required: [true, "must have a location"],
-    }
-}, {timestamps: true })
+    }, 
+    
+}, {timestamps: {createdAt: true } })
 
 const Chore = mongoose.model("Chore", ChoreSchema);
 

@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
+import axios from 'axios'
 
 import MyJobs from "../components/MyJobs";
 import Dashboard from "../components/Dashboard";
@@ -8,6 +9,17 @@ import { Link } from "react-router-dom";
 const Main = (props)=>{
     const [choreList, setChoreList] = useState([]);
     const [user, setUser] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/Chores')
+        .then((res) => {
+            console.log(res);
+            setChoreList(res.data)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, [])
 
     return(
         <>

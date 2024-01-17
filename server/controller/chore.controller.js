@@ -17,7 +17,7 @@ module.exports = {
         Chore.create(req.body)
             .then((newChore) =>{
                 console.log(newChore);
-                res.josn(newChore);
+                res.json(newChore);
             })
             .catch((err) => {
                 console.log("something went wrong in the createNewChore");
@@ -26,10 +26,10 @@ module.exports = {
     },
 
     findOneChore: (req,res) => {
-        Chore.findOne({_id: req.params.id})
-            .then((oneChore) => {
-                console.log(oneChore);
-                res.json(oneChore);
+        Chore.findOne({_id: req.params.id })
+        .then((oneChore) => {
+                console.log(oneChore)
+                res.json(oneChore)
             })
             .catch((err) => {
                 console.log("find One Chore failed");
@@ -39,9 +39,9 @@ module.exports = {
 
     deleteOneChore: (req, res) => {
         Chore.deleteOne({_id: req.params.id})
-            .then((deleteChore) => {
-                console.log(deleteChore);
-                res.json(deleteChore);
+        .then((deletedChore) => {
+            console.log(deletedChore);
+            res.json(deletedChore);
             })
             .catch((err) => {
                 console.log("delete One Chore Failed");
@@ -50,7 +50,7 @@ module.exports = {
     },
 
     updateChore: (req, res) => {
-        Chore.findOneAndUpdate({_id: req.params.id},
+        Chore.findByIdAndUpdate({_id: req.params.id},
             req.body,
             {new: true, runValidators: true}
         )

@@ -3,18 +3,21 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 const Dashboard =  props => {
-    const [chores, setChores] = useState([])
+    const {choreList, setChoreList} = props
+    
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/Chores')
+    
+
+    const deleteHandler = (id) => {
+        axios.delete(`http://localhost:8000/api/deleteChores/${id}`)
         .then((res) => {
             console.log(res);
-            setChores(res.data)
+            setChoreList(choreList.filter((chore) => chore._id !== id))
         })
         .catch((err) => {
             console.log(err);
         })
-    }, [])
+    }
     return (
         <div class='container '>
 
@@ -28,20 +31,20 @@ const Dashboard =  props => {
                 </thead>
                 <tbody>
                     {
-                    chores.map((chore) => (
+                    choreList.map((chore) => (
                     <tr key={chore._id}>
                         <td>{chore.title}</td>
                         <td>{chore.location}</td>
                         
                         <td class='d-flex justify-content-evenly'>
                                 {/* code for the view link - `/vew/${chore._id}` */}
-                                <Link to={'/view/:id'}><button type="button" class="btn btn-primary">view</button></Link>
+                                <Link to={`/view/${chore._id}`}><button type="button" class="btn btn-primary">view</button></Link>
                                 {/* add will need to add it to the my jobs side  */}
                                 <button type="button" class="btn btn-primary">add</button>
                                 {/* code for the edit link - to={`/edit/${chore._id}` */}
-                                <Link to={'/edit/:id'}><button type="button" class="btn btn-primary">edit</button></Link>
+                                <Link to={`/edit/${chore._id}`}><button type="button" class="btn btn-primary">edit</button></Link>
                                 {/* cancel link will be a delete function */}
-                                <button type="button" class="btn btn-primary">cancel</button>
+                                <button onClick={() => deleteHandler(chore._id)} type="button" class="btn btn-primary">cancel</button>
                         </td>
                         
                         

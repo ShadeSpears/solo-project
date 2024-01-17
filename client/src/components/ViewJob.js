@@ -1,7 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios'
 
-const ViewJob =  props => {
+const ViewJob =  (props) => {
+    const [chore, setChore] = useState ({})
+    const {id} = useParams();
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/Chores/${id}`)
+        .then((res) => {
+            console.log(res.data);
+            setChore(res.data)
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, [])
+
+
+
+
+
     return (
         <>
         <div class=' d-flex justify-content-end'>
@@ -11,12 +30,15 @@ const ViewJob =  props => {
             </div>
         </div>
             <div class='d-flex justify-content-center'>
-                <h1>"job title will go here"</h1>
+                <h1>{chore.title}</h1>
             </div>
             <table class="border border-dark border-5 container px-5 my-5">
-                <tr><h2>"job description"</h2></tr>
-                <tr><h2>Location: "job location"</h2></tr>
-                <tr><h2>Posted on: "job post date"</h2></tr>
+                <thead>
+                    <tr><h2>{chore.description}</h2></tr>
+                    <tr><h2>Location: {chore.location}</h2></tr>
+                    <tr><h2>Posted by: "poster of jobs name goes here somehow"</h2></tr>
+                    <tr><h2>Posted on: {chore.createdAt}</h2></tr>
+                </thead>
             </table>
             <div class=" d-flex justify-content-center">
             <button type="button" class="btn btn-success">Add to my Jobs</button>
