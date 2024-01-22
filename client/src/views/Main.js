@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Main = (props)=>{
     const [choreList, setChoreList] = useState([]);
-    const [user, setUser] = useState([]);
+    
 
     useEffect(() => {
         axios.get('http://localhost:8000/api/Chores')
