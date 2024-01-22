@@ -33,7 +33,7 @@ const EditJob =  props => {
         axios.put(`http://localhost:8000/api/updateChore/${id}`, chore)
         .then((res) => {
             console.log(res);
-            navigate('/dashboard')
+            navigate('/')
         })
         .catch((err) => {
             setErrors(err.response.data.errors)
@@ -49,8 +49,8 @@ const EditJob =  props => {
                     <h1>Edit your job posting</h1>
                 </div>
                 <div class='d-flex align-items-center'>
-                    <Link to={'/dashboard'}><button type="button" class="btn btn-primary">Back</button></Link>
-                    <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link>
+                    <Link to={'/'}><button type="button" class="btn btn-primary">Back</button></Link>
+                    {/* <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link> */}
                 </div>
             </div>
             
@@ -69,7 +69,7 @@ const EditJob =  props => {
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" name="description" value={chore.description} onChange={(e) => setChore({...chore, description: e.target.value})}></textarea>
                     {
-                        errors.title ?
+                        errors.description ?
                         <p class='text-danger'>{errors.description.message}</p>:
                         null
                     }
@@ -78,7 +78,7 @@ const EditJob =  props => {
                     <label class="form-label" for="location">Location</label>
                     <input class="form-control" type="text" name="location" value={chore.location} onChange={(e) => setChore({...chore, location: e.target.value})}></input>
                     {
-                        errors.title ?
+                        errors.location ?
                         <p class='text-danger'>{errors.location.message}</p>:
                         null
                     }

@@ -16,11 +16,11 @@ module.exports = {
     createNewChore: (req, res) => {
         Chore.create(req.body)
             .then((newChore) =>{
-                console.log(newChore);
+                
                 res.json(newChore);
             })
             .catch((err) => {
-                console.log("something went wrong in the createNewChore");
+                
                 res.status(400).json(err)
             })
     },

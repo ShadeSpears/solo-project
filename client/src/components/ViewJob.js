@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
+import dayjs from 'dayjs'
 
 const ViewJob =  (props) => {
     const [chore, setChore] = useState ({})
@@ -25,8 +26,8 @@ const ViewJob =  (props) => {
         <>
         <div class=' d-flex justify-content-end'>
             <div class='d-flex align-items-center'>
-                <Link to={'/dashboard'}><button type="button" class="btn btn-primary">Back</button></Link>
-                <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link>
+                <Link to={'/'}><button type="button" class="btn btn-primary">Back</button></Link>
+                {/* <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link> */}
             </div>
         </div>
             <div class='d-flex justify-content-center'>
@@ -37,7 +38,7 @@ const ViewJob =  (props) => {
                     <tr><h2>{chore.description}</h2></tr>
                     <tr><h2>Location: {chore.location}</h2></tr>
                     <tr><h2>Posted by: "poster of jobs name goes here somehow"</h2></tr>
-                    <tr><h2>Posted on: {chore.createdAt}</h2></tr>
+                    <tr><h2>Posted on: {dayjs(chore.createdAt).format("MMMM D, YYYY")}</h2></tr>
                 </thead>
             </table>
             <div class=" d-flex justify-content-center">

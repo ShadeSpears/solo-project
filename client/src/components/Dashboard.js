@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,7 @@ const Dashboard =  props => {
         axios.delete(`http://localhost:8000/api/deleteChores/${id}`)
         .then((res) => {
             console.log(res);
+            
             setChoreList(choreList.filter((chore) => chore._id !== id))
         })
         .catch((err) => {

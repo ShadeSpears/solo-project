@@ -21,7 +21,7 @@ const AddJob =  () => {
         axios.post("http://localhost:8000/api/newChore", chore)
         .then((res) => {
             console.log(res);
-            navigate('/dashboard')
+            navigate('/')
             setChore({
                 title:"",
                 description:"",
@@ -29,6 +29,7 @@ const AddJob =  () => {
             })
         })
         .catch((err) => {
+            console.log(err.response.data.errors)
             setErrors(err.response.data.errors)
         })
     }
@@ -39,8 +40,8 @@ const AddJob =  () => {
                     <h1>Add a Job</h1>
                 </div>
                 <div class='d-flex align-items-center'>
-                    <Link to={'/dashboard'}><button type="button" class="btn btn-primary">Back</button></Link>
-                    <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link>
+                    <Link to={'/'}><button type="button" class="btn btn-primary">Back</button></Link>
+                    {/* <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link> */}
                 </div>
             </div>
             {/* This will be inside of a form */}
@@ -59,7 +60,7 @@ const AddJob =  () => {
                     <label class="form-label" for="description">Description</label>
                     <textarea class="form-control" type="text" name="description" value={chore.description} onChange={changeHandler}></textarea>
                     {
-                        errors.title ?
+                        errors.description ?
                         <p class='text-danger'>{errors.description.message}</p>:
                         null
                     }
@@ -68,7 +69,7 @@ const AddJob =  () => {
                     <label class="form-label" for="location">Location</label>
                     <input class="form-control" type="text" name="location" value={chore.location} onChange={changeHandler}></input>
                     {
-                        errors.title ?
+                        errors.location ?
                         <p class='text-danger'>{errors.location.message}</p>:
                         null
                     }
