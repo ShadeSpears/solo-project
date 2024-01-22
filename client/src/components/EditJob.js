@@ -53,7 +53,6 @@ const EditJob =  props => {
                     {/* <Link to={'/'}><button type="button" class="btn btn-primary">logout</button></Link> */}
                 </div>
             </div>
-            
             <form onSubmit={submitHandler}>
             <div class="container px-5 my-5">
                 <div>
