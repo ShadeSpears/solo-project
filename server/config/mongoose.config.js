@@ -10,5 +10,5 @@ mongoose.connect(`mongodb://localhost/${choreDB}`, {
         console.log(`You are connected to the database called ${choreDB}`)
     })
     .catch((err) => {
-        console.log(`you had a problem connecting the ${dbName}. Here is your error:`, err)
+        console.log(`you had a problem connecting the ${choreDB}. Here is your error:`, err)
     })

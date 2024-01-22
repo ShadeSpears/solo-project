@@ -6,6 +6,9 @@ import './App.css';
 
 import Main from './views/Main';
 import AddJob from './components/AddJob'
+import ViewJob from './components/ViewJob'
+import EditJob from './components/EditJob';
+
 
 function App() {
   return (
@@ -13,8 +16,10 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Main/>}/>
-        <Route path="/add" element={<AddJob/>}/>
-        {/* <Route path="/edit/:id" element={<Edit/>}/> */}
+        <Route path="/addJob" element={<AddJob/>}/>
+        <Route path="/view/:id" element={<ViewJob/>}/>
+        <Route path="/edit/:id" element={<EditJob/>}/>
+        
       </Routes>
     </div>
     </BrowserRouter>
